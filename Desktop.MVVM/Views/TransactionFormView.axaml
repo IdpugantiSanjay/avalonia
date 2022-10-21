@@ -1,0 +1,79 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Desktop.MVVM.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Desktop.MVVM.Views.TransactionFormView">
+
+    <Design.DataContext>
+        <viewModels:TransactionFormViewModel />
+    </Design.DataContext>
+
+    <Border BoxShadow="2 2 2 2 #e5e5e5" CornerRadius="3" Padding="20">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto">
+
+            <Button HorizontalAlignment="Right" Background="Transparent" Command="{Binding $parent[Window].DataContext.Forward}">
+                    <PathIcon Data="{StaticResource ForwardIcon}"></PathIcon>    
+            </Button>
+            
+            
+
+            <StackPanel Grid.Row="1" Margin="0 0 0 30">
+                <TextBlock FontSize="18" HorizontalAlignment="Center"> Transaction Details </TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="2" Margin="0 0 0 10" MaxWidth="300">
+                <TextBlock Margin="0 0 0 5">
+                    Amount:
+                </TextBlock>
+                <TextBox Watermark="120" Name="AmountTextBox" Text="{Binding Amount}"> </TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="3" MaxWidth="300" Margin="0 0 0 10">
+                <CheckBox Checked="CheckboxChecked" Unchecked="CheckboxUnchecked">Income ?</CheckBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="4" HorizontalAlignment="Stretch"
+                        Margin="0 0 0 10" MaxWidth="300">
+                <TextBlock Margin="0 0 0 5">
+                    Category:
+                </TextBlock>
+                <ComboBox Name="Category" x:Name="Categories" HorizontalAlignment="Stretch"
+                          SelectedIndex="0" SelectedItem="{Binding Category}"
+                          Items="{Binding ExpenseCategories}">
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <PathIcon Height="12" Width="36"
+                                          Data="{ Binding  Converter={StaticResource  CategoryConvertor}}">
+                                </PathIcon>
+                                <TextBlock Text="{Binding}" />
+                            </StackPanel>
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="5" Margin="0 0 0 10" MaxWidth="300">
+                <DatePicker Header="Date of Transaction" SelectedDate="{Binding DateTime}" />
+            </StackPanel>
+
+            <StackPanel Grid.Row="6" Margin="0 0 0 10" MaxWidth="300">
+                <TextBlock Margin="0 0 0 5">
+                    Description:
+                </TextBlock>
+                <TextBox Watermark="ex: Food Ordered from Restaurant" Name="DescriptionTextBox"
+                         Text="{Binding Description}">
+                </TextBox>
+            </StackPanel>
+
+            <StackPanel Grid.Row="7" Margin="0 10 0 0" HorizontalAlignment="Center">
+                <Button CornerRadius="3" Padding="36 8 36 8" Content="Save"
+                        Command="{Binding Save}">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Border>
+
+</UserControl>

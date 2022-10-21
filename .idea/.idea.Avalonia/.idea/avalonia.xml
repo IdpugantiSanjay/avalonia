@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Desktop.MVVM/App.axaml" value="Desktop.MVVM/Desktop.MVVM.csproj" />
+        <entry key="Desktop.MVVM/Icons.axaml" value="Desktop.MVVM/Desktop.MVVM.csproj" />
+        <entry key="Desktop.MVVM/ViewModels/TransactionListViewModel.axaml" value="Desktop/Desktop.csproj" />
+        <entry key="Desktop.MVVM/Views/Icons.xaml.axaml" value="Desktop/Desktop.csproj" />
+        <entry key="Desktop.MVVM/Views/MainWindow.axaml" value="Desktop.MVVM/Desktop.MVVM.csproj" />
+        <entry key="Desktop.MVVM/Views/TransactionForm.axaml" value="Desktop.MVVM/Desktop.MVVM.csproj" />
+        <entry key="Desktop.MVVM/Views/TransactionFormView.axaml" value="Desktop.MVVM/Desktop.MVVM.csproj" />
+        <entry key="Desktop.MVVM/Views/TransactionList.axaml" value="Desktop/Desktop.csproj" />
+        <entry key="Desktop.MVVM/Views/TransactionListView.axaml" value="Desktop.MVVM/Desktop.MVVM.csproj" />
+        <entry key="Desktop.MVVM2/Views/MainWindow.axaml" value="Desktop.MVVM2/Desktop.MVVM2.csproj" />
+        <entry key="Desktop/App.axaml" value="Desktop/Desktop.csproj" />
+        <entry key="Desktop/MainWindow.axaml" value="Desktop/Desktop.csproj" />
+      </map>
+    </option>
+  </component>
+</project>

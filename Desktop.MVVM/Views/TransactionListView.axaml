@@ -1,0 +1,81 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:Desktop.MVVM.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="Desktop.MVVM.Views.TransactionListView"
+             Padding="20">
+    
+  
+
+    <Design.DataContext>
+        <viewModels:TransactionListViewModelDesignView />
+    </Design.DataContext>
+
+    <StackPanel>
+        
+        <Button Background="Transparent" Command="{Binding $parent[Window].DataContext.Backward}" Margin="0 0 0 20 ">
+            <PathIcon Data="{StaticResource BackIcon}" HorizontalAlignment="Left"></PathIcon>    
+        </Button>
+        
+        
+        
+        <StackPanel.Styles>
+            <Style Selector="Border.Icon:pointerover">
+                <Setter Property="Cursor" Value="hand"/>
+            </Style>
+            
+            <Style Selector="FlyoutPresenter.mySpecialClass">
+                <Setter Property="Background" Value="Transparent"></Setter>
+                <Setter Property="BorderThickness" Value="0"></Setter>
+            </Style>
+        </StackPanel.Styles>
+    
+        
+        <ItemsControl Items="{Binding Items}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                        <Border BorderThickness="2" BorderBrush="#fff0f6" MaxWidth="350" Padding="10"
+                            CornerRadius="3" Margin="0 0 0 20">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <StackPanel Orientation="Horizontal">
+                                <Border HorizontalAlignment="Left" CornerRadius="10" Classes="Icon"
+                                        Padding="12"
+                                        Background="#fff0f6">
+                                    <PathIcon Height="36" Width="36" Foreground="#a61e4d"
+                                              Data="{ Binding Category, Converter={StaticResource  CategoryConvertor}}">
+                                        <PathIcon.ContextFlyout>
+                                            <Flyout FlyoutPresenterClasses="mySpecialClass">
+                                                <Button Content="Delete" CommandParameter="{Binding}" Command="{Binding Delete}">
+                                                </Button>
+                                            </Flyout>
+                                        </PathIcon.ContextFlyout>
+                                    </PathIcon>
+                                </Border>
+                            </StackPanel>
+
+                            <StackPanel VerticalAlignment="Center" Grid.Column="1"
+                                        Margin="20 0 20 0">
+                                <TextBlock
+                                    Text="{Binding Description}" Margin="0 0 20 5">
+                                </TextBlock>
+                                <TextBlock
+                                    FontWeight="Light" FontSize="12"
+                                    Text="{Binding DateTime, Converter={ StaticResource DateTimeConvertor }}">
+                                </TextBlock>
+                            </StackPanel>
+
+                            <StackPanel VerticalAlignment="Center" Grid.Column="2">
+                                <TextBlock FontSize="16"
+                                           Text="{Binding Amount, Converter={ StaticResource CurrencyConvertor }}">
+                                </TextBlock>
+                            </StackPanel>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+
+</UserControl>

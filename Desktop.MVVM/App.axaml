@@ -1,0 +1,22 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="using:Desktop.MVVM"
+             xmlns:convertors="clr-namespace:Desktop.MVVM.Convertors"
+             x:Class="Desktop.MVVM.App"
+>
+    
+    <Application.DataTemplates>
+        <local:ViewLocator />
+    </Application.DataTemplates>
+
+    <Application.Resources>
+        <convertors:DateTimeConvertor x:Key="DateTimeConvertor"/>
+        <convertors:CurrencyConvertor x:Key="CurrencyConvertor"/>
+        <convertors:CategoryStaticResourceConvertor x:Key="CategoryConvertor"/>
+    </Application.Resources>
+    
+    <Application.Styles>
+        <FluentTheme Mode="Light" />
+        <StyleInclude Source="avares://Desktop.MVVM/Icons.axaml" />
+    </Application.Styles>
+</Application>
